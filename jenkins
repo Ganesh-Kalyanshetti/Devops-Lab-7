@@ -1,0 +1,46 @@
+pipeline
+{
+    agent any
+    tools
+    {
+        jdk 'jdk21'
+    }
+    stages
+    {
+        stage("Connect")
+        {
+            steps
+            {
+                git branch:"main",url:"https://github.com/Ganesh-Kalyanshetti/Devops-Lab-7.git"
+            }
+        }
+        stage("Complie")
+        {
+            steps
+            {
+                echo "Compling the code"
+                sh "javac Hello.java"
+            }
+        }
+        stage("Running")
+        {
+            steps
+            {
+                echo "Running the code"
+                sh "java Hello"
+                sh "python3 Hello.py"
+            }
+        }
+    }
+    post
+    {
+        success
+        {
+            echo "Successfully executed the code"
+        }
+        failure
+        {
+            echo  "Error occurd during the execution of the file"
+        }
+    }
+}
