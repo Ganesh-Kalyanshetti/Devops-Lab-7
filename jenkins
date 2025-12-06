@@ -33,7 +33,7 @@ pipeline
     {
         success
         {
-            echo "Successfully executed the code"
+            echo "Successfully executed the POLL SCM"
         }
         failure
         {
